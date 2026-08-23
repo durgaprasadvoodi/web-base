@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entry-Level Job Board — HYD / BLR / CHN</title>
+<style>
+  :root{
+    --ink:#1c2521;
+    --paper:#f3efe6;
+    --paper-2:#eae4d4;
+    --rule:#c9c0a8;
+    --signal:#c65d2e;
+    --signal-dim:#e8c9b8;
+    --stamp-green:#3c5a44;
+    --mono: "JetBrains Mono","Courier New",monospace;
+    --serif: "Georgia","Iowan Old Style",serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    line-height:1.4;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:32px 20px 80px;}
+
+  header{
+    border-bottom:3px solid var(--ink);
+    padding-bottom:18px;
+    margin-bottom:22px;
+  }
+  .masthead{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .masthead h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:2.1rem;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .masthead h1 span{color:var(--signal);}
+  .edition{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:#5a5142;
+    text-align:right;
+  }
+  .subline{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:#5a5142;
+    margin-top:6px;
+  }
+
+  .filters{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+    align-items:center;
+    font-family:var(--mono);
+    font-size:0.78rem;
+  }
+  .filters label{
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:#5a5142;
+    margin-right:4px;
+  }
+  select, input[type="text"]{
+    font-family:var(--mono);
+    font-size:0.8rem;
+    padding:6px 8px;
+    border:1.5px solid var(--ink);
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:0;
+  }
+  select:focus, input:focus{outline:2px solid var(--signal);outline-offset:1px;}
+  input[type="text"]{min-width:180px;}
+
+  .status-line{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    color:#7a7160;
+    margin-bottom:14px;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--paper-2);
+  }
+  thead th{
+    text-align:left;
+    font-family:var(--mono);
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    color:#5a5142;
+    border-bottom:2px solid var(--ink);
+    padding:10px 12px;
+  }
+  tbody td{
+    padding:12px;
+    border-bottom:1px solid var(--rule);
+    font-size:0.95rem;
+    vertical-align:top;
+  }
+  tbody tr:hover{background:#e2dbc6;}
+
+  .job-title{
+    font-weight:600;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .job-title:hover{color:var(--signal);text-decoration:underline;}
+
+  .tag{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:0.65rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    padding:2px 6px;
+    border:1px solid currentColor;
+    margin:1px 3px 1px 0;
+  }
+  .tag-loc{color:var(--stamp-green);}
+  .tag-new{
+    color:var(--signal);
+    background:var(--signal-dim);
+    border-color:var(--signal);
+    font-weight:700;
+  }
+  .tag-exp{color:#5a5142;}
+
+  .first-seen{font-family:var(--mono);font-size:0.78rem;color:#5a5142;white-space:nowrap;}
+
+  .apply-link{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+    padding:5px 9px;
+    text-decoration:none;
+    white-space:nowrap;
+    display:inline-block;
+  }
+  .apply-link:hover{background:var(--ink);color:var(--paper);}
+
+  .empty-state, .loading{
+    font-family:var(--mono);
+    font-size:0.85rem;
+    color:#5a5142;
+    padding:40px 12px;
+    text-align:center;
+    border:1px dashed var(--rule);
+  }
+
+  footer{
+    margin-top:30px;
+    font-family:var(--mono);
+    font-size:0.7rem;
+    color:#8a8171;
+    border-top:1px solid var(--rule);
+    padding-top:14px;
+  }
+  footer a{color:#8a8171;}
+
+  @media (max-width:640px){
+    .masthead{flex-direction:column;align-items:flex-start;}
+    .edition{text-align:left;}
+    table, thead, tbody, th, td, tr{display:block;}
+    thead{display:none;}
+    tbody tr{
+      border:1px solid var(--rule);
+      margin-bottom:14px;
+      padding:10px;
+      background:var(--paper-2);
+    }
+    tbody td{border:none;padding:4px 2px;}
+    .col-label{
+      font-family:var(--mono);
+      font-size:0.65rem;
+      text-transform:uppercase;
+      color:#8a8171;
+      display:block;
+      margin-top:6px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="masthead">
+      <h1>Entry-Level <span>Job Board</span></h1>
+      <div class="edition">Auto-scraped daily<br>Hyderabad · Bengaluru · Chennai</div>
+    </div>
+    <div class="subline">0–2 yrs experience only · source: offcampusjobdrives.com</div>
+  </header>
+
+  <div class="filters">
+    <div>
+      <label for="locFilter">Location</label>
+      <select id="locFilter">
+        <option value="all">All</option>
+        <option value="Hyderabad">Hyderabad</option>
+        <option value="Bengaluru">Bengaluru</option>
+        <option value="Chennai">Chennai</option>
+      </select>
+    </div>
+    <div>
+      <label for="search">Search</label>
+      <input type="text" id="search" placeholder="role, company…">
+    </div>
+  </div>
+
+  <div class="status-line" id="statusLine">Loading jobs.json…</div>
+
+  <table id="jobTable" style="display:none;">
+    <thead>
+      <tr>
+        <th style="width:46%">Job title</th>
+        <th style="width:16%">First seen</th>
+        <th style="width:18%">Location / Exp</th>
+        <th style="width:20%">Link</th>
+      </tr>
+    </thead>
+    <tbody id="jobBody"></tbody>
+  </table>
+
+  <div class="empty-state" id="emptyState" style="display:none;">
+    No jobs found yet — check back after the next scheduled scrape.
+  </div>
+
+  <footer>
+    Runs daily via GitHub Actions · scrapes offcampusjobdrives.com listing &amp; post pages ·
+    filtered for Hyderabad / Bengaluru / Chennai + 0–2 yrs experience keywords ·
+    always verify details on the official application page before applying.
+  </footer>
+
+</div>
+
+<script>
+  const state = { jobs: [], loc: "all", q: "" };
+
+  function daysAgo(dateStr){
+    const d = new Date(dateStr);
+    const now = new Date();
+    const diff = Math.floor((now - d) / (1000*60*60*24));
+    return diff;
+  }
+
+  function render(){
+    const body = document.getElementById("jobBody");
+    const table = document.getElementById("jobTable");
+    const empty = document.getElementById("emptyState");
+    const statusLine = document.getElementById("statusLine");
+
+    let filtered = state.jobs.filter(j => {
+      const locOk = state.loc === "all" || (j.locations || []).includes(state.loc);
+      const q = state.q.trim().toLowerCase();
+      const qOk = !q || j.title.toLowerCase().includes(q);
+      return locOk && qOk;
+    });
+
+    statusLine.textContent = `${filtered.length} job${filtered.length===1?"":"s"} matching filters · ${state.jobs.length} tracked total`;
+
+    if (filtered.length === 0){
+      table.style.display = "none";
+      empty.style.display = "block";
+      return;
+    }
+    table.style.display = "table";
+    empty.style.display = "none";
+
+    body.innerHTML = filtered.map(j => {
+      const isNew = daysAgo(j.first_seen) <= 1;
+      const locTags = (j.locations||[]).map(l => `<span class="tag tag-loc">${l}</span>`).join("");
+      return `
+        <tr>
+          <td>
+            <a class="job-title" href="${j.link}" target="_blank" rel="noopener">${j.title}</a>
+            ${isNew ? '<span class="tag tag-new">New</span>' : ''}
+          </td>
+          <td><span class="col-label">First seen</span><span class="first-seen">${j.first_seen}</span></td>
+          <td><span class="col-label">Location / Exp</span>${locTags}<span class="tag tag-exp">0–2 yrs</span></td>
+          <td><span class="col-label">Link</span><a class="apply-link" href="${j.link}" target="_blank" rel="noopener">View posting →</a></td>
+        </tr>`;
+    }).join("");
+  }
+
+  fetch("jobs.json?_=" + Date.now())
+    .then(r => {
+      if (!r.ok) throw new Error("no jobs.json yet");
+      return r.json();
+    })
+    .then(data => {
+      state.jobs = data.sort((a,b) => (a.first_seen < b.first_seen ? 1 : -1));
+      render();
+    })
+    .catch(() => {
+      document.getElementById("statusLine").textContent = "jobs.json not found yet — it's created after the first scheduled run.";
+      document.getElementById("emptyState").style.display = "block";
+    });
+
+  document.getElementById("locFilter").addEventListener("change", e => {
+    state.loc = e.target.value;
+    render();
+  });
+  document.getElementById("search").addEventListener("input", e => {
+    state.q = e.target.value;
+    render();
+  });
+</script>
+</body>
+</html>
