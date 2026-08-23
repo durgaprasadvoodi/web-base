@@ -1,0 +1,36 @@
+name: Daily Job Scrape
+
+on:
+  schedule:
+    # Runs at 04:00 UTC daily (~09:30 AM IST)
+    - cron: "0 4 * * *"
+  workflow_dispatch: {}   # lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper
+        run: python scraper.py
+
+      - name: Commit updated jobs.json
+        run: |
+          git config user.name "job-tracker-bot"
+          git config user.email "actions@github.com"
+          git add jobs.json
+          git diff --quiet --cached || git commit -m "Update jobs.json [automated]"
+          git push
