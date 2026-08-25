@@ -293,6 +293,7 @@
     body.innerHTML = filtered.map(j => {
       const isNew = daysAgo(j.first_seen) <= 1;
       const locTags = (j.locations||[]).map(l => `<span class="tag tag-loc">${l}</span>`).join("");
+      const sourceTag = j.source ? `<span class="tag tag-exp">${j.source}</span>` : '';
       return `
         <tr>
           <td>
@@ -300,7 +301,7 @@
             ${isNew ? '<span class="tag tag-new">New</span>' : ''}
           </td>
           <td><span class="col-label">First seen</span><span class="first-seen">${j.first_seen}</span></td>
-          <td><span class="col-label">Location / Exp</span>${locTags}<span class="tag tag-exp">0–2 yrs</span></td>
+          <td><span class="col-label">Location / Exp</span>${locTags}<span class="tag tag-exp">0–2 yrs</span><br>${sourceTag}</td>
           <td><span class="col-label">Link</span><a class="apply-link" href="${j.link}" target="_blank" rel="noopener">View posting →</a></td>
         </tr>`;
     }).join("");
