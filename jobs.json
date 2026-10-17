@@ -1,5 +1,35 @@
 [
   {
+    "title": "Stripe is Hiring",
+    "link": "https://latestmncjobs.in/stripe-3wv2",
+    "locations": [
+      "Bengaluru"
+    ],
+    "experience_match": true,
+    "source": "Telegram: @latestmncjobs",
+    "first_seen": "2026-10-17"
+  },
+  {
+    "title": "Poshmark is Hiring",
+    "link": "https://latestmncjobs.in/poshmark-agad",
+    "locations": [
+      "Chennai"
+    ],
+    "experience_match": true,
+    "source": "Telegram: @latestmncjobs",
+    "first_seen": "2026-10-17"
+  },
+  {
+    "title": "ICE is Hiring",
+    "link": "https://latestmncjobs.in/ice-by6s",
+    "locations": [
+      "Hyderabad"
+    ],
+    "experience_match": true,
+    "source": "Telegram: @latestmncjobs",
+    "first_seen": "2026-10-17"
+  },
+  {
     "title": "DP World Hiring For Machine Learning Scientist",
     "link": "https://offcampusjobdrives.com/dp-world-hiring-for-machine-learning-scientist/",
     "locations": [
@@ -3000,33 +3030,5 @@
     "experience_match": true,
     "source": "Telegram: @latestmncjobs",
     "first_seen": "2026-08-26"
-  },
-  {
-    "title": "Caterpillar is Hiring",
-    "link": "https://latestmncjobs.in/caterpillar-z211",
-    "locations": [
-      "Chennai"
-    ],
-    "experience_match": true,
-    "source": "Telegram: @latestmncjobs",
-    "first_seen": "2026-08-26"
-  },
-  {
-    "title": "Sanmina Recruitment For Graduate Trainee \u2013 Programmer Analyst I",
-    "link": "https://offcampusjobdrives.com/sanmina-recruitment-for-graduate-trainee-programmer-analyst-i/",
-    "locations": [
-      "Chennai"
-    ],
-    "experience_match": true,
-    "first_seen": "2026-08-25"
-  },
-  {
-    "title": "Guidehouse Recruitment For Junior Service Desk Engineer",
-    "link": "https://offcampusjobdrives.com/guidehouse-recruitment-for-junior-service-desk-engineer/",
-    "locations": [
-      "Hyderabad"
-    ],
-    "experience_match": true,
-    "first_seen": "2026-08-25"
   }
 ]
