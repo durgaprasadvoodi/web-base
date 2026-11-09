@@ -1,5 +1,15 @@
 [
   {
+    "title": "Flex is Hiring",
+    "link": "http://B.com/BBA",
+    "locations": [
+      "Chennai"
+    ],
+    "experience_match": true,
+    "source": "Telegram: @latestmncjobs",
+    "first_seen": "2026-11-09"
+  },
+  {
     "title": "Cisco Off Campus Hiring For Software Engineer",
     "link": "https://offcampusjobdrives.com/cisco-off-campus-hiring-for-software-engineer/",
     "locations": [
@@ -3013,16 +3023,6 @@
     "link": "https://offcampusjobdrives.com/jasmin-infotech-recruitment-for-software-developer/",
     "locations": [
       "Chennai"
-    ],
-    "experience_match": true,
-    "source": "Off-Campus Job Drives",
-    "first_seen": "2026-09-08"
-  },
-  {
-    "title": "Medtronic Off Campus Hiring For IT Developer \u2013 LLM Engineer",
-    "link": "https://offcampusjobdrives.com/medtronic-off-campus-hiring-for-it-developer-llm-engineer/",
-    "locations": [
-      "Hyderabad"
     ],
     "experience_match": true,
     "source": "Off-Campus Job Drives",
